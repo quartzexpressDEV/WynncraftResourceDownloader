@@ -11,10 +11,10 @@ import java.util.zip.ZipFile;
 
 public class Main {
     private static final String WELCOME_MESSAGE = "This program will download the current (hopefully) Server Resource Pack for Wynncraft. During this process, it will connect to github.com, where the download links are hosted, as well as rp-cdn.wynncraft.com, where the Resource Pack is hosted.";
-    private static final String READABLE_RP_TEXT = "Do you want to extract the files from the Resource Pack? By default, you can't easily access the files inside the zip";
+    private static final String READABLE_RP_TEXT = "Do you want to extract the files from the Resource Pack? This is useful if you want to edit the Resource Pack or view its contents, as by default this isn't possible";
     private static final String PACKS_JSON_URL = "https://raw.githubusercontent.com/quartzexpressDEV/wynncraft-resourcepacks/main/packs_new.json";
     // lol
-    private static final Pattern jsonPattern = Pattern.compile("\"link\":\"(.*)\"", Pattern.MULTILINE);
+    private static final Pattern jsonPattern = Pattern.compile("\"link\":[ \\t]*\"(.*)\"", Pattern.MULTILINE);
     public static void main(String[] args) {
         boolean Readable = false;
 

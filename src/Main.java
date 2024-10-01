@@ -34,8 +34,9 @@ public class Main {
                 String RPUrl = matcher.group(1);
                 String FileName = RPUrl.substring(RPUrl.lastIndexOf('/')+1);
                 String FileNameNoExt = FileName.substring(0, FileName.lastIndexOf('.'));
+
                 System.out.println("Downloading Resource Pack...");
-                DownloadFile(RPUrl, FileName, "Minecraft Java/1.20.4");
+                DownloadFileWithUserAgent(RPUrl, FileName, "Minecraft Java/1.20.4");
                 System.out.println("Downloaded Resource Pack successfully as " + FileName);
                 if (Readable) {
                     try {
@@ -45,12 +46,14 @@ public class Main {
                     } catch (IOException e) {
                         System.out.println("An error occurred while extracting the Resource Pack. Please report this with the information below:\n");
                         e.printStackTrace();
+                        System.exit(0);
                     }
                 }
             }
             else
             {
                 System.out.println("Epic regex error, please report this");
+                System.exit(1);
             }
         } else {
             System.out.println("An Error occurred, this should not be possible, what the hell? Please report this");
@@ -81,10 +84,11 @@ public class Main {
         } catch (Exception e){
             System.out.println("An error occurred while downloading a string. Please report this with the information below:\n");
             e.printStackTrace();
+            System.exit(0);
             return null;
         }
     }
-    public static void DownloadFile(String fileUrl, String path, String userAgent) {
+    public static void DownloadFileWithUserAgent(String fileUrl, String path, String userAgent) {
         try {
             URL url = new URI(fileUrl).toURL();
             HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
@@ -109,6 +113,7 @@ public class Main {
         } catch (Exception e) {
             System.out.println("An error occurred while downloading a file. Please report this with the information below:\n");
             e.printStackTrace();
+            System.exit(0);
         }
 
     }
@@ -142,6 +147,7 @@ public class Main {
                 } catch (IOException e) {
                     System.out.println("An error occurred while extracting a file. Please report this with the information below:\n");
                     e.printStackTrace();
+                    System.exit(0);
                 }
             }
         }

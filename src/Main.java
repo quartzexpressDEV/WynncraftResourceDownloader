@@ -53,7 +53,7 @@ public class Main {
             else
             {
                 System.out.println("Epic regex error, please report this");
-                System.exit(1);
+                System.exit(0);
             }
         } else {
             System.out.println("An Error occurred, this should not be possible, what the hell? Please report this");
